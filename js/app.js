@@ -1,4 +1,6 @@
-var recordButton = document.body.querySelector('#record');
+var $ = document.querySelector.bind(document);
+
+var recordButton = $('#record');
 
 recordButton.addEventListener('click', recordVideo);
 
@@ -12,18 +14,25 @@ navigator.getUserMedia({
 function onGetMedia(stream) {
   window.stream = stream;
   if (window.URL) {
-    document.body.querySelector('#camera').src = window.URL.createObjectURL(stream);
+    $('#camera').src = window.URL.createObjectURL(stream);
   } else {
-    document.body.querySelector('#camera').src = stream;
+    $('#camera').src = stream;
   }
 }
 
 function stopRecording() {
   recording = false;
-  recordButton.textContent = 'Record some stuff';
+  recordButton.textContent = 'Record';
   mediaRecorder.stop();
-  document.body.querySelector('#recorded').src = window.URL.createObjectURL(new Blob(recordedBlobs, {type: 'video/webm'}));
-  document.body.querySelector('#recorded').play();
+
+  var vid = document.createElement('a');
+  vid.download = 'vid.webm';
+  var v = document.createElement('video');
+  vid.appendChild(v);
+  v.loop = true;
+  v.src = vid.href = window.URL.createObjectURL(new Blob(recordedBlobs, {type: 'video/webm'}));
+  $('#videos').appendChild(vid);
+  v.play();
 }
 
 function recordVideo() {
@@ -31,7 +40,7 @@ function recordVideo() {
     return stopRecording();
   }
 
-  recordButton.textContent = 'Stop Recording stuff.';
+  recordButton.textContent = 'Stop Recording';
   recording = true;
   var options = {mimeType: 'video/webm', bitsPerSecond: 100000};
   recordedBlobs = [];
