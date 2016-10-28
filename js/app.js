@@ -40,6 +40,7 @@ function onGetMedia(stream) {
 }
 
 function stopRecording() {
+  var $videos = $('#videos');
   recording = false;
   recordButton.textContent = 'Record';
   mediaRecorder.stop();
@@ -50,7 +51,11 @@ function stopRecording() {
   vid.appendChild(v);
   v.loop = true;
   v.src = vid.href = window.URL.createObjectURL(new Blob(recordedBlobs, {type: 'video/webm'}));
-  $('#videos').appendChild(vid);
+  $videos.appendChild(vid);
+
+  if (!$videos.classList.contains('has-videos')) {
+    $videos.classList.add('has-videos');
+  }
   v.play();
 }
 
