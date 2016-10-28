@@ -74,7 +74,7 @@
     recording = true;
     recordedBlobs = [];
 
-    const options = {mimeType: 'video/webm', bitsPerSecond: 90000};
+    let options = {mimeType: 'video/webm', bitsPerSecond: 90000};
     try {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e0) {
