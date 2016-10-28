@@ -13,22 +13,35 @@
         margin: 0;
         padding: 0;
       }
+      body {
+        background: #000;
+      }
       header {
         background: #2c7e57;
         padding: 5px;
         height: 50px;
         text-align: center;
+        border-bottom: solid 2px #99f92b;
       }
       button {
         display: inline-block;
         padding: 0 15px;
         line-height: 45px;
         border: 1px solid rgba(255,255,255,0.2);
-        background: rgba(0,0,0,0.2);
+        background: rgb(153, 249, 43);
         border-radius: 5px;
-        color: #FFF;
+        color: #2c7e57;
         font-size: 120%;
         cursor: pointer;
+        outline: none;
+        border-bottom: solid 2px rgba(0, 0, 0, 0.35);
+      }
+      button.recording {
+        border-radius: 5px;
+        color: #ffffff;
+        background: #E91E63;
+        border: solid 2px rgba(0, 0, 0, 0.35);
+        border-bottom: none;
       }
       #camera {
         width: 100%;
@@ -46,6 +59,7 @@
         display: flex;
         align-items: center;
         background: rgba(0,0,0,0.8);
+        overflow: auto;
         transform: translate3d(0, 100%, 0);
         transition: transform 250ms ease-in-out;
       }
@@ -80,10 +94,6 @@
       }
 
       #videos video {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
         height: 100%;
       }
 
