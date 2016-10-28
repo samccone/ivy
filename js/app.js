@@ -42,6 +42,7 @@
   }
 
   function stopRecording() {
+    var videosEl = $('#videos');
     recording = false;
     recordButton.classList.toggle('recording');
     recordButton.textContent = 'Record';
@@ -55,6 +56,11 @@
     videoElm.src = videoLink.href = window.URL.createObjectURL(
       new Blob(recordedBlobs, {type: 'video/webm'}));
     videoList.appendChild(videoElm);
+
+    if (!videosEl.classList.contains('has-videos')) {
+      videosEl.classList.add('has-videos');
+    }
+
     videoElm.play();
   }
 
@@ -68,7 +74,7 @@
     recording = true;
     recordedBlobs = [];
 
-    const options = {mimeType: 'video/webm', bitsPerSecond: 90000};
+    let options = {mimeType: 'video/webm', bitsPerSecond: 90000};
     try {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e0) {
