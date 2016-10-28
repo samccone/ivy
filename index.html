@@ -76,9 +76,13 @@
         border-radius: 2px;
         margin: 5px;
         overflow: hidden;
+      }
+
+      #videos video {
+        height: calc(100% - 6px);
         animation-name: video-enter;
         animation-duration: 250ms;
-        animation-timing-function: ease-in-out;;
+        animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
       }
 
@@ -91,10 +95,6 @@
           transform: translate3d(0, 0, 0);
           opacity: 1;
         }
-      }
-
-      #videos video {
-        height: 100%;
       }
 
       #reload-prompt {
