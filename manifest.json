@@ -3,12 +3,12 @@
     "short_name": "Ivy",
     "icons": [{
       "src": "icons/camera.png",
-      "sizes": "120x120",
+      "sizes": "256x256",
       "type": "image/png"
     }],
     "display": "fullscreen",
     "orientation": "portrait",
-    "background_color": "#0000",
+    "background_color": "#000000",
     "theme_color": "#2c7e57",
     "start_url": "index.html"
 }
